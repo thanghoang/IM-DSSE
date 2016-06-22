@@ -1,0 +1,59 @@
+Message-ID: <28493495.1075842462305.JavaMail.evans@thyme>
+Date: Fri, 27 Oct 2000 02:31:00 -0700 (PDT)
+From: mnewsletter@mtlnh.com
+To: dfossum@enron.com
+Subject: Surge Protection for Telephone Modems
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-From: MTL NewsLetter <MNewsLetter@mtlnh.com>
+X-To: dfossum@enron.com
+X-cc: 
+X-bcc: 
+X-Folder: \Drew_Fossum_Dec2000_June2001_1\Notes Folders\Discussion threads
+X-Origin: FOSSUM-D
+X-FileName: dfossum.nsf
+
+If you have missed any of the Newsletters on IS Barriers in Div 2, Zener
+Barriers, Ground Monitoring Systems, Surge Protection, Process I/O,
+Rotational Speed Application, or Intrinsically Safe Pneumatic Valves, please
+click your reply button and note same.
+
+
+
+Surge Protection for Telephone Modems
+
+The proliferation of modems in electronic equipment is widespread today and
+makes them susceptible to damage by surges.  The cause of this damage is the
+potential voltage difference between the ground at the modem and the ground
+at the telephone exchange.
+
+When protecting telephone modems from surges, it is important to note that
+the Telephone Company provides a gas discharge tube at its demarcation point
+to protect the user from being shocked.  Since a gas discharge tube does not
+fire until the voltage exceeds 700 Volts, the potential voltage difference
+is already 700 Volts.  Added to that amount is the increase of voltage
+difference that results from a ground wire length of at least 3 feet, and
+thus the potential voltage difference before the discharge tube fires and
+the device being protected is closer to 1200 Volts -- enough power to
+destroy the device.
+
+MTL's solution is the ZB24501 surge suppressor, a DIN rail mount model with
+RJ45 connections.  It is UL listed, is only available in connector fashion,
+and is easy to install --  the grounding connection is through the DIN rail.
+
+The price for this unit is an inexpensive $32.00 -- considering the business
+impact of damage to a modem, such a sum is money well spent.
+
+To find out more on how you can benefit from an MTL solution in a variety of
+applications, visit us at www.mtlnh.com, www.mtl-inst.com, and/or
+www.telematic.com. You may call MTL at (800) 835-7075 for the location of
+the MTL Representative nearest to you.
+
+To unsubscribe, please use your REPLY button and write "Unsubscribe" in the
+subject line.
+
+
+
+
+

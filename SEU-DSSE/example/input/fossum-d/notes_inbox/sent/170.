@@ -1,0 +1,369 @@
+Message-ID: <24840835.1075842457817.JavaMail.evans@thyme>
+Date: Thu, 11 May 2000 02:59:00 -0700 (PDT)
+From: drew.fossum@enron.com
+To: susan.scott@enron.com
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) --
+ Draft Accounting Memo
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-From: Drew Fossum
+X-To: Susan Scott
+X-cc: 
+X-bcc: 
+X-Folder: \Drew_Fossum_Dec2000_June2001_1\Notes Folders\Discussion threads
+X-Origin: FOSSUM-D
+X-FileName: dfossum.nsf
+
+What a tangled mess.  please call and splain what's going on here.  Thanks. DF
+---------------------- Forwarded by Drew Fossum/ET&S/Enron on 05/11/2000 
+09:57 AM ---------------------------
+   
+	
+	
+	From:  Bob Chandler                           05/10/2000 10:33 AM
+	
+
+To: Susan Scott/ET&S/Enron@ENRON
+cc: Rod Hayslett/FGT/Enron@Enron, Dan Fancler/ET&S/Enron@Enron, Drew 
+Fossum/ET&S/Enron@ENRON, Mary Kay Miller/ET&S/Enron@ENRON 
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo
+
+Please note that if TW eventually decides to file for a tariff change to 
+allow cash in lieu of in-kind fuel retention that Rod would like to see our 
+proposed accounting methodology included in the filing.  
+---------------------- Forwarded by Bob Chandler/ET&S/Enron on 05/10/2000 
+10:26 AM ---------------------------
+
+Rod Hayslett
+
+05/10/2000 10:25 AM
+To: Bob Chandler/ET&S/Enron@ENRON
+cc:  
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+If FERC is going to tell us the accounting or specifically approve our 
+proposed accounting then I have no issues.     I do not want to have a tariff 
+change with our interpretation of accounting requirements for it, without 
+that specific approval.   So I guess we need to specifically ask for approval 
+of the accounting.
+
+
+
+   
+	
+	
+	From:  Bob Chandler                           05/10/2000 09:32 AM
+	
+
+To: Rod Hayslett/FGT/Enron@Enron
+cc:  
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+See responses below.
+
+
+
+Rod Hayslett
+
+05/10/2000 06:38 AM
+To: Bob Chandler/ET&S/Enron@ENRON
+cc:  
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+Some simple questions?
+
+
+
+
+
+As I indicated this morning, it's not that I "want" to classify these credits 
+as revenues in order to achieve any commercial, regulatory, overhead 
+allocation or tax objectives, but if all other factors are considered equal 
+believe that revenue treatment is the most appropriate decision from  both 
+GAAP and FERC USofA standpoints.  
+
+FERC USofA
+
+In the "Shipper Supplied Gas" section of Order 581 the Commission concluded 
+that "it is not appropriate to mandate revenue recognition for gas provided 
+by shippers for compressor fuel and other pipeline system use and used to 
+provide transportation services.  Instead, each pipeline will have the 
+discretion to determine whether it will recognize revenue for these 
+transactions in its accounting records...Pipelines electing to recognize 
+shipper provided gas as revenue must also recognize an equal amount of 
+purchased gas expense.  Pipelines would credit the appropriate transportation 
+revenue account (Accounts 489.1 through 489.4) and record an equal amount in 
+Account 805, Other Gas Purchases."    We have chosen not to recognize 
+revenue, but we do want to track our transactions, so we debit and credit 
+different subaccounts of acct 805.  The over-retained volumes on TW are 
+debited to acct 805 and credited to acct 495 Other Revenues (also in 
+accordance with Order 581. However, for internal reporting we map the 495 
+credit to cost of transport (expense).    Sounds reasonable to me.    Will 
+you be able to continue that in SAP? Yes.  We'll be using statistical orders 
+in lieu of subaccounts.
+While the Commission agreed that pipelines would not be required to recognize 
+shipper provided gas on its books, it did require those who chose to do so to 
+record it as transportation revenue, not as a credit to fuel or gas purchase 
+expense.
+
+GAAP
+
+Revenues.  Statement of Financial Accounting Concepts No. 6 defines revenues 
+as inflows or other enhancements of assets of an entity or settlements of its 
+liabilities (or a combination of both) from delivering or purchasing goods, 
+rendering services, or other activities that constitute the entity's ongoing 
+major or central operations.
+
+In the TW proposal the cash inflows are the result of a fuel charge factor in 
+the transportation tariff.  TW's ongoing major or central operation is the 
+rendering of natural gas transportation services to shippers pursuant to its 
+tariff.  Therefore  the credits resulting from the assessment of the fuel 
+charge constitute transportation revenues.    I don't think there is a 
+limitation with respect to cash received in lieu of gas.  When gas is 
+retained we can debit and credit 805 and it's a wash.  When we receive cash 
+we have to charge a balance sheet account (Cash) and credit an income 
+statement account.  We can't opt out of recording an earnings creating 
+transaction.   What is the argument that this cash does not just take the 
+place of Gas you would have received and should track the normal accounting 
+for gas?  The cash alone cannot take the place of a retained volume; the cash 
+together with a gas purchase is the volumetric equivalent of a volume 
+retained.   Under this proposal we would charge gas purchase expense when the 
+cash is used to buy gas that would replace the volumes not retained in 
+kind.   I am concerned that what you are proposing may not work as well after 
+the next rate case (since I don't believe it likely we will be allowed to 
+continue to collect the windfall) and we may be setting ourselves up for 
+restatements.    But I guess it really won't matter, because whatever we do 
+FERC will have specifically ordered us to account for it that way, isn't that 
+right?  There is nothing about our current or proposed accounting that would 
+have to be changed as the result of a future rate case that changes the 
+volumetric retention factors.  However, if a tracker is imposed, then we 
+would have additional entries to make, similar to those we now make on NNG.  
+In any event, the  imbalance cashout  approach described below  would result 
+in the recording of fuel retention entries  (debit and credit account 805)  
+exactly the same as we now record for volumes  retained.  It would merely 
+result in the additional entry to resolve the imbalance by debiting cash and 
+crediting the imbalance receivable from the shipper.  
+
+Expenses.  Statement of Financial Accounting Concepts No. 5 speaks to the 
+recognition of expenses and losses:  "Further guidance for recognition of 
+expenses and losses is intended to recognize consumption (using up) of 
+economic benefits...during a period.  Expenses...are generally recognized 
+when an entity's economic benefits are used up in delivering or producing 
+goods, rendering service, or other activities that constitute its ongoing 
+major or central operations..."
+
+In the TW proposal natural gas volumes are consumed in the operation of 
+compressor engines to render natural gas transportation service to 
+shippers...the ongoing major or central operation of the company.  Receiving 
+cash from shippers in accordance with the Tariff's fuel charge does not 
+reduce the consumption of natural gas volumes in rendering transportation 
+service, Instead it provides economic assets (cash) to the company to pay for 
+the gas volumes that have to be acquired to run the compressors.  Therefore 
+the proceeds from the fuel charge represent transportation revenues for the 
+company, not a fuel or gas purchase expense reduction.     I recently 
+received a memo from Susan Scott (Legal) indicating that in approving tariff 
+changes to allow shippers to pay cash for fuel use rather than to provide 
+in-kind volumes, FERC looks at the situation as being analogous to cashing 
+out an imbalance, where the imbalance was created by the shipper not 
+delivering the fuel retention volumes.  If we followed FERC's lead here we 
+would record the fuel retention entries with a debit and credit to Account 
+805, then credit the cash receipt from the shipper as a reduction of its 
+imbalance.  Any gain or loss on the cash-out would be credited to Acct 495 
+(gain) or charged to Acct 813 (loss), just like any other gain or loss on 
+resolution of an imbalance.  
+
+I think the cashout approach will probably meet the objective of not bloating 
+reported margins...at least if the tariff language is consistent with this 
+concept.  If you prefer this cashout approach to my original proposal to 
+record fee revenue, then I will go ahead and re-draft the accounting memo 
+along those lines.  Any final determination of the appropriate accounting, 
+though, would have to be made after the language in the tariff revision is 
+finalized. However, if the cashout approach is your preference, then I expect 
+that we could work with Rates to make sure that the tariff language doesn't 
+conflict with the cashout approach.
+
+Shall I re-draft and recirculate the memo using the cashout approach?        
+
+
+
+
+Rod Hayslett
+
+05/08/2000 06:32 AM
+To: Bob Chandler/ET&S/Enron@ENRON
+cc:  
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+I guess I'd like to understand the reason for wanting to call them 
+revenue?    
+
+
+
+   
+	
+	
+	From:  Bob Chandler                           05/05/2000 06:04 PM
+	
+
+To: Rod Hayslett/FGT/Enron@Enron
+cc:  
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+I don't disagree that there are frequently numerous ways to account for 
+things--and some ways are better than others for tax, regulatory, financing 
+and other purposes.  From an historical perspective before Order 636 we 
+didn't seem to have any difficulty recording the proceeds from the PGA 
+tracker portion of the tariff as transportation revenue.  Under the proposed 
+circumstances, we are charging a fee based on average fuel retention 
+percentages that are set somewhat higher than actual consumption and there is 
+no requirement for a true-up.  In this circumstance, even though we may call 
+it a fuel reimbursement factor, it seems to be more characteristic of revenue 
+than expense credit.  
+
+That having been said, if it's deemed to be advantageous to the company to 
+account for these cash proceeds as an expense credit, I could support 
+crediting the proceeds to a/c 805 similar to our accounting for volumetric 
+fuel retention.  If that's the path you'd like us to follow, I'll amend the 
+draft memo accordingly.  Please confirm.
+
+
+
+
+
+Rod Hayslett
+
+05/05/2000 06:58 AM
+To: Bob Chandler/ET&S/Enron@ENRON
+cc: Dan Fancler/ET&S/Enron@ENRON 
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+My first blush problems are 2.     1) This is really reimbursement for an 
+item that is designated an expense - compressor fuel and so I don't know why 
+you want to show it as revenue.     2)   Having a stat order will not help 
+the income statement presentation of revenues, a lower percentage of costs 
+being recovered from demand charges, a major factor if we decide to make TW 
+really stand on its own.
+
+What is the reason for wanting to bloat the revenue in the income 
+statement?     Explain the logic for showing a revenue item for the contra of 
+an item that has been determined to be an expense.     
+ 
+
+
+   
+	
+	
+	From:  Bob Chandler                           05/04/2000 04:16 PM
+	
+
+To: Rod Hayslett/FGT/Enron@Enron
+cc: Dan Fancler/ET&S/Enron@ENRON 
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+If we go with the transport revenue approach, we would for sure set up a 
+separate SAP statistical order to accumulate the fuel reimbursement fee 
+separately from the other revenue components.  If you think this approach is 
+distortive from a reporting trend perspective, we could classify these 
+revenues as "other gas revenues" on our GAAP statements--similar to the way 
+we've classified excess fuel retention revenue in TW's 1999 GAAP statements.  
+
+
+
+
+Rod Hayslett
+
+05/04/2000 02:41 PM
+To: Bob Chandler/ET&S/Enron@ENRON
+cc: Dan Fancler/ET&S/Enron@ENRON 
+
+Subject: Re: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo  
+
+I would think at a minimum we would like to have some kind of a tracking 
+account (nojn-FERC)  for accounting purposes to be able to tell the earnigs 
+impact of the transactions.      I have a problem with recording the revenue 
+in a plain transportation revenue account since it will skew the percentage 
+of transport revenues collected from demand charges  which is an important 
+piece for the financial world.   Ultimately I guess FERC will tell us how to 
+account for it.
+
+
+
+   
+	
+	
+	From:  Bob Chandler                           05/04/2000 12:55 PM
+	
+
+To: Mary Kay Miller/ET&S/Enron@ENRON, Steven Harris/ET&S/Enron@ENRON, 
+Lorraine Lindberg/ET&S/Enron@ENRON, Susan Scott/ET&S/Enron@ENRON, Glen 
+Hass/ET&S/Enron@ENRON
+cc: Steve Klimesh/ET&S/Enron@ENRON, Dan Fancler/ET&S/Enron@Enron, Rod 
+Hayslett/FGT/Enron@Enron, Jerry Thomas Moore/Corp/Enron@ENRON 
+
+Subject: TW Proposal for Fuel Retention in Dollars (not in-kind) -- Draft 
+Accounting Memo
+
+From what we have so far been able to learn about the referenced proposal, 
+and after discussions with Dan Fancler, I prepared the attached draft of an 
+accounting memorandum for your consideration.  
+
+Please advise if you have additional facts or ideas to be considered.
+
+
+
+By copy of this memo I'm asking Jerry Moore for excise tax advice as to 
+whether TW would risk incurring excise tax if we record gas sales to the 
+shippers and then retain the volumes for fuel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

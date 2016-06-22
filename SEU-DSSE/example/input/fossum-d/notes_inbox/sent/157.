@@ -1,0 +1,109 @@
+Message-ID: <17811031.1075842457475.JavaMail.evans@thyme>
+Date: Wed, 3 May 2000 03:39:00 -0700 (PDT)
+From: drew.fossum@enron.com
+To: keith.petersen@enron.com
+Subject: Gallup - Status Update, May 4, AM
+Cc: mary.miller@enron.com
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: quoted-printable
+Bcc: mary.miller@enron.com
+X-From: Drew Fossum
+X-To: Keith Petersen
+X-cc: Mary Kay Miller
+X-bcc: 
+X-Folder: \Drew_Fossum_Dec2000_June2001_1\Notes Folders\Discussion threads
+X-Origin: FOSSUM-D
+X-FileName: dfossum.nsf
+
+Please call when you've reviewed this.  Thanks. DF
+---------------------- Forwarded by Drew Fossum/ET&S/Enron on 05/03/2000=20
+10:36 AM ---------------------------
+  =20
+=09
+=09
+=09From:  Susan Scott                           05/03/2000 08:46 AM
+=09
+
+To: Drew Fossum@ENRON, Donna Martens/ET&S/Enron@ENRON
+cc: =20
+
+Subject: Gallup - Status Update, May 4, AM
+
+FYI
+---------------------- Forwarded by Susan Scott/ET&S/Enron on 05/03/2000=20
+08:44 AM ---------------------------
+
+
+James Pfeffer@ENRON_DEVELOPMENT
+05/03/2000 08:00 AM
+To: Michel Nelson/ET&S/Enron@ENRON, John R Keller/OTS/Enron@Enron, Ray=20
+Smith/ET&S/Enron@ENRON, Lorraine Lindberg/ET&S/Enron@ENRON, Arnold L=20
+Eisenstein/ENRON_DEVELOPMENT@ENRON_DEVELOPMENT, Steven=20
+Harris/ET&S/Enron@ENRON, James Pfeffer/ENRON_DEVELOPMENT@ENRON_DEVELOPMENT,=
+=20
+Rich Jolly/ET&S/Enron@ENRON, Jeffery Fawcett/ET&S/Enron@ENRON, Rich=20
+Plachy/Enron Communications@Enron Communications, David=20
+Roensch/ET&S/Enron@ENRON, Team Gallup/ET&S/Enron@ENRON, Ronald=20
+Matthews/ET&S/Enron@ENRON, Earl Chanley/ET&S/Enron@Enron, Vera=20
+Jones/ET&S/Enron@ENRON, Brian H Mellon/ENRON_DEVELOPMENT@ENRON_DEVELOPMENT,=
+=20
+John G Keller@EES, Phil Lowry@ENRON, Darrell Schoolcraft@ENRON, Susan=20
+Scott@ENRON, Kevin Hyatt@ENRON
+cc: =20
+
+Subject: Gallup - Status Update, May 4,  AM
+
+The suction strainer was removed last night.  The piping spool was=20
+reinstalled without the major compressor alignment problems that were=20
+expected.  This significantly reduced the downtime necessary for the remova=
+l=20
+of the suction strainer.
+
+No major foreign materials were found in the strainer.  Some small weld bea=
+ds=20
+were found.  There were some signs that the strainer may have been vibratin=
+g.
+
+Several compressor test runs were made early this AM to measure the vibrati=
+on=20
+levels without the suction strainer.  The high frequency vibration was=20
+reduced to safe levels.  There is no longer any risk to the unit piping=20
+integrity.
+
+The compressor bearing vibration did not decrease due to the removal of the=
+=20
+strainer.  Rolls will continue to assess the collected vibration data to=20
+determine the cause of the high drive end bearing vibration and construct a=
+=20
+game plan.
+
+The station once again became available for service around 4 AM.  The=20
+compressor may or may not be run dependent on need.  Gallup Ops and Gas=20
+Control are in close contact.
+
+The station will be manned if the compressor is running due to Gas Control=
+=20
+being unable to send remote setpoints to the station controller.  The probl=
+em=20
+stems from OPTO-22 not supporting the particular Modbus function required t=
+o=20
+send setpoints.  This is a =01+lack of functionality=01, in the new LCM4 ve=
+rsion=20
+controllers/software utilized on the Gallup Project. =20
+
+EECC has been in contact with OPTO-22 to determine the time table for=20
+resolving this problem.  EECC, TW Ops are working on a temporary fix to=20
+enable Gas Control to send remote setpoints to Gallup.  Gas Control is=20
+currently able to monitor data from Gallup.
+
+Some instrumentation will be replaced today that failed due to the high=20
+vibration over the fast few days.
+
+Final tuning of the station control loops and surge control will be also be=
+=20
+conducted today.
+
+James Pfeffer
+
+
