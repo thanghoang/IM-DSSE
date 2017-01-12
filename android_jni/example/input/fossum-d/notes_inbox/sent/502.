@@ -1,0 +1,71 @@
+Message-ID: <23952569.1075842467875.JavaMail.evans@thyme>
+Date: Fri, 10 Nov 2000 03:38:00 -0800 (PST)
+From: mnewsletter@mtlnh.com
+To: dfossum@enron.com
+Subject: Surge Protection and Grounding
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-From: MTL NewsLetter <MNewsLetter@mtlnh.com>
+X-To: dfossum@enron.com
+X-cc: 
+X-bcc: 
+X-Folder: \Drew_Fossum_Dec2000_June2001_1\Notes Folders\Discussion threads
+X-Origin: FOSSUM-D
+X-FileName: dfossum.nsf
+
+If you have missed any of the Newsletters on IS Barriers in Div 2, Zener
+Barriers, Ground Monitoring Systems, Surge Protection, Process I/O,
+Rotational Speed Application, or Intrinsically Safe Pneumatic Valves, please
+click your reply button and note same.
+
+Is Grounding a Substitute for Surge Suppression Protection?
+
+One of the most common questions regarding Surge Suppression is whether it
+is necessary when a grounding system exists. Proper grounding is necessary
+for the Instrumentation and Automation systems in use today, but is no
+substitute for Surge Suppression equipment in preventing electrical system
+damage. Grounding should only be part of the strategy in preventing
+equipment damage from electrical surges.
+
+An electrical surge is a burst of voltage that lasts only a matter of
+microseconds but which generates very large amounts of current, and this
+current must be diverted away from the electrical equipment to be protected.
+Some people hold the opinion that if a grounding system is installed, the
+electrical system voltage will rise together and lower together and that no
+damage to the equipment will occur. While this could be true in theory, the
+reality is that very few installations are isolated from other voltages. For
+example, the addition of computers with modems or network cards introduces
+another ground into the system.
+
+If the two buildings are separated electrically, then the possibility of
+damage is minimized, but it is more likely that modems or data lines
+interconnect the buildings. A typical scenario might be:
+
+ A lightning strike in the vicinity of one building increases the
+ ground potential to 200KV.
+
+ The resistance of the ground decreases this voltage to 15KV
+ by the time it gets to the ground circuit of that building.
+
+ As the voltage decreases over the distance to the adjacent
+ building, it has lowered to 3KV, with a resulting difference
+ of 12KV.
+
+In such a case, the voltage difference between the two buildings generates a
+surge current large enough to destroy the communication lines between the
+two buildings, and no grounding system can prevent the damage to the
+communication ports of the computers. Similarly, any instruments mounted
+outdoors can have the same type of voltage difference from the control panel
+to which they are connected.
+
+Therefore, while good grounding is essential, it will not neutralize the
+potential damage to equipment and processes caused by a surge event.
+
+To discover how you can benefit from an MTL solution in a variety of
+applications, visit us at www.mtlnh.com, www.mtl-inst.com, and/or
+www.telematic.com. You may call MTL at (800) 835-7075 for the location of
+the MTL Representative nearest to you.
+
+To unsubscribe, please use your REPLY button and write "Unsubscribe" in the
+subject line.

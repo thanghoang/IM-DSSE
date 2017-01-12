@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session Name="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE.workspace">
+  <int Value="1" Name="m_selectedTab"/>
+  <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE.workspace" Name="m_workspaceName"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE.cpp" Name="FileName"/>
+      <int Value="1499" Name="FirstVisibleLine"/>
+      <int Value="1506" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Client_DSSE.cpp" Name="FileName"/>
+      <int Value="1590" Name="FirstVisibleLine"/>
+      <int Value="1608" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_thread_precompute_aeskey.h" Name="FileName"/>
+      <int Value="11" Name="FirstVisibleLine"/>
+      <int Value="12" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_thread_precompute_aeskey.cpp" Name="FileName"/>
+      <int Value="2" Name="FirstVisibleLine"/>
+      <int Value="3" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/main_client.cpp" Name="FileName"/>
+      <int Value="57" Name="FirstVisibleLine"/>
+      <int Value="81" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_thread_getData.cpp" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Param.h" Name="FileName"/>
+      <int Value="5" Name="FirstVisibleLine"/>
+      <int Value="5" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_KeyGen.cpp" Name="FileName"/>
+      <int Value="316" Name="FirstVisibleLine"/>
+      <int Value="317" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Server_DSSE.cpp" Name="FileName"/>
+      <int Value="361" Name="FirstVisibleLine"/>
+      <int Value="359" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+  </TabInfoArray>
+  <SerializedObject Name="m_breakpoints">
+    <long Value="3" Name="Count"/>
+    <SerializedObject Name="Breakpoint0">
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE.cpp" Name="file"/>
+      <int Value="135" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <int Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
+    <SerializedObject Name="Breakpoint1">
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE.cpp" Name="file"/>
+      <int Value="1674" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <int Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
+    <SerializedObject Name="Breakpoint2">
+      <wxString Value="/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/main_client.cpp" Name="file"/>
+      <int Value="160" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <int Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
+  </SerializedObject>
+</Session>
