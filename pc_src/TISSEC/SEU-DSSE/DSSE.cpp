@@ -12,7 +12,34 @@
 #include "math.h"
 DSSE::DSSE()
 {
-    
+    //register the PRNG with Fortuna
+     
+    string seed = "123456";
+    int err;
+    if ((err = register_prng(&fortuna_desc)) != CRYPT_OK) 
+    {
+		printf("Error registering Fortuna PRNG : %s\n", error_to_string(err));
+	}
+
+	if ((err = find_prng("fortuna")) != CRYPT_OK) 
+    {
+		printf("Invalid PRNG : %s\n", error_to_string(err));
+	}
+
+	/* start it */
+	if ((err = fortuna_start(&prng)) != CRYPT_OK) 
+    {
+		printf("Start error: %s\n", error_to_string(err));
+	}
+
+	if ((err = fortuna_add_entropy((unsigned char*)seed.c_str(), seed.size(), &prng)) != CRYPT_OK) 
+    {
+		printf("Add_entropy error: %s\n", error_to_string(err));
+	}
+    if ((err = fortuna_ready(&prng)) != CRYPT_OK) 
+    {
+		printf("Ready error: %s\n", error_to_string(err));
+	}
 }
 
 DSSE::~DSSE()
@@ -181,15 +208,6 @@ int DSSE::setupData_structure(MatrixType **I,
 #endif        
         
                 
-#if !defined (CLIENT_SERVER_MODE) && !defined(LOAD_FROM_DISK)
-        printf("   1.1. Loading encrypted matrix from files...");
-        this->loadEncrypted_matrix_from_files(I);
-    #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        printf("   1.1. Loading block state matrix from files...");
-        this->loadBlock_state_matrix_from_file(pBlockStateMatrix);
-    #endif
-        printf("OK!\n");
-#endif
         
 #if defined (ENCRYPT_PHYSICAL_FILE) 
        /* Encrypt the files c_j */
@@ -542,7 +560,7 @@ int DSSE::addToken(     string new_adding_file_with_path,
         hashmap_key_class hmap_file_trapdoor(file_trapdoor,TRAPDOOR_SIZE);
         if(rT_F[hmap_file_trapdoor]==NULL)
         {
-            this->pickRandom_element(selectedIdx,lstFree_column_idx);
+            this->pickRandom_element(selectedIdx,lstFree_column_idx,&prng);
             rT_F[hmap_file_trapdoor] = selectedIdx;
         }
         
@@ -566,7 +584,7 @@ int DSSE::addToken(     string new_adding_file_with_path,
             
             if(rT_W[hmap_keyword_trapdoor]==NULL)
             {
-                this->pickRandom_element(selectedIdx,lstFree_row_idx);
+                this->pickRandom_element(selectedIdx,lstFree_row_idx,&prng);
                 rT_W[hmap_keyword_trapdoor] = selectedIdx;
             }
             
@@ -825,7 +843,7 @@ int DSSE::addToken(     string new_adding_file_with_path,
         hashmap_key_class hmap_file_trapdoor(file_trapdoor,TRAPDOOR_SIZE);
         if(rT_F[hmap_file_trapdoor]==NULL)
         {
-            this->pickRandom_element(selectedIdx,lstFree_column_idx);
+            this->pickRandom_element(selectedIdx,lstFree_column_idx,&prng);
             rT_F[hmap_file_trapdoor] = selectedIdx;
         }
         
@@ -847,7 +865,7 @@ int DSSE::addToken(     string new_adding_file_with_path,
             hashmap_key_class hmap_keyword_trapdoor(keyword_trapdoor, TRAPDOOR_SIZE);
             if(rT_W[hmap_keyword_trapdoor]==NULL)
             {
-                this->pickRandom_element(selectedIdx,lstFree_row_idx);
+                this->pickRandom_element(selectedIdx,lstFree_row_idx,&prng);
                 rT_W[hmap_keyword_trapdoor] = selectedIdx;
             }
             keyword_index = rT_W[hmap_keyword_trapdoor];
@@ -1427,7 +1445,7 @@ int DSSE::requestBlock_index(   string adding_filename_with_pad,
         hashmap_key_class hmap_file_trapdoor(file_trapdoor,TRAPDOOR_SIZE);
         if(rT_F[hmap_file_trapdoor] == NULL)
         {
-            this->pickRandom_element(selectedIdx,lstFree_column_idx);
+            this->pickRandom_element(selectedIdx,lstFree_column_idx,&prng);
             rT_F[hmap_file_trapdoor] = selectedIdx;
         }
         // Get the file index from the hashmap
@@ -1461,10 +1479,11 @@ exit:
  *
  * @param random_element: (output) element being picked
  * @param setIdx: (input) set of indices
+ * @param prng: pseudo-random number state according to libtomcrypt
  * @return	0 if successful
  */
  
-int DSSE::pickRandom_element(TYPE_INDEX &random_element, vector<TYPE_INDEX> &setIdx)
+int DSSE::pickRandom_element(TYPE_INDEX &random_element, vector<TYPE_INDEX> &setIdx,prng_state* prng)
 {
     int ret = 0;
     
@@ -1473,22 +1492,12 @@ int DSSE::pickRandom_element(TYPE_INDEX &random_element, vector<TYPE_INDEX> &set
     int seed_len = BLOCK_CIPHER_SIZE ; 
 	int error = 0;
    
-    unsigned char *pSeed = new unsigned char[seed_len];
     TYPE_INDEX tmp;
     
     memset(pseudo_random_number,0,BLOCK_CIPHER_SIZE);               
-	//	Generating random seed needed for calling fortuna PRNG
-	if ((error = rdrand(pSeed,seed_len, RDRAND_RETRY_NUM)) != CRYPT_OK) {
-		printf("Error calling rdrand_get_n_units_retry: %d\n", error);
-		ret = KEY_GENERATION_ERR;
-        goto exit;
-	}
+	
     // Generate random number 
-	if ((error = invokeFortuna_prng(pSeed, pseudo_random_number, seed_len, BLOCK_CIPHER_SIZE)) != CRYPT_OK) {
-		printf("Error calling call_fortuna_prng function: %d\n", error);
-		ret = KEY_GENERATION_ERR;
-        goto exit;
-	}
+    fortuna_read(pseudo_random_number, BLOCK_CIPHER_SIZE, prng);
     
     memcpy(&tmp,&pseudo_random_number[7],sizeof(tmp)); // TAKE A HALF OF PSEUDO RANDOM NUMBER VARIABLE
     random_idx = tmp % setIdx.size();
@@ -1498,7 +1507,6 @@ int DSSE::pickRandom_element(TYPE_INDEX &random_element, vector<TYPE_INDEX> &set
 
 exit:
     memset(pseudo_random_number,0,BLOCK_CIPHER_SIZE);
-    delete pSeed;
     return ret;
 }
 
@@ -1710,7 +1718,7 @@ int DSSE::createKeyword_file_pair(
 					// Get the file index from the hashmap
                     if(rT_F[hmap_file_trapdoor] == FILE_NOT_EXIST)
                     {
-                        this->pickRandom_element(selectedIdx,lstFree_file_idx);
+                        this->pickRandom_element(selectedIdx,lstFree_file_idx,&prng);
                         rT_F[hmap_file_trapdoor] = selectedIdx;
                     }	
                    
@@ -1739,7 +1747,7 @@ int DSSE::createKeyword_file_pair(
     
                         if(rT_W[hmap_keyword_trapdoor] == KEYWORD_NOT_EXIST)
                         {
-                            this->pickRandom_element(selectedIdx,lstFree_keyword_idx);
+                            this->pickRandom_element(selectedIdx,lstFree_keyword_idx,&prng);
                             rT_W[hmap_keyword_trapdoor] = selectedIdx;
                             
                         }

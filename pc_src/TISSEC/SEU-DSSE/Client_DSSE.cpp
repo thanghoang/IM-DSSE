@@ -22,7 +22,32 @@ vector<unsigned long int> Client_DSSE::stats[16];
 Client_DSSE::Client_DSSE()
 {
     
-    
+    string seed = "123456";
+    int err;
+    if ((err = register_prng(&fortuna_desc)) != CRYPT_OK) 
+    {
+		printf("Error registering Fortuna PRNG : %s\n", error_to_string(err));
+	}
+
+	if ((err = find_prng("fortuna")) != CRYPT_OK) 
+    {
+		printf("Invalid PRNG : %s\n", error_to_string(err));
+	}
+
+	/* start it */
+	if ((err = fortuna_start(&prng)) != CRYPT_OK) 
+    {
+		printf("Start error: %s\n", error_to_string(err));
+	}
+
+	if ((err = fortuna_add_entropy((unsigned char*)seed.c_str(), seed.size(), &prng)) != CRYPT_OK) 
+    {
+		printf("Add_entropy error: %s\n", error_to_string(err));
+	}
+    if ((err = fortuna_ready(&prng)) != CRYPT_OK) 
+    {
+		printf("Ready error: %s\n", error_to_string(err));
+	}
 }
 
 Client_DSSE::~Client_DSSE()
@@ -51,7 +76,7 @@ int Client_DSSE::genMaster_key()
     DSSE_KeyGen *dsse_key = new DSSE_KeyGen();
     this->masterKey = new MasterKey();
     int ret;
-    if((ret = dsse_key->genMaster_key(this->masterKey,this->pseudo_random_key,BLOCK_CIPHER_SIZE,this->extractor_salt,BLOCK_CIPHER_SIZE,this->pseudo_random_key,BLOCK_CIPHER_SIZE))!=0)
+    if((ret = dsse_key->genMaster_key(this->masterKey,&prng))!=0)
     {
         printf("Key generation error!");
         ret = KEY_GENERATION_ERR;
@@ -65,7 +90,6 @@ exit:
     delete dsse_key;
     return ret;
 }
-#if defined(CLIENT_SERVER_MODE)
 
 /**
  * Function Name: sendFile
@@ -178,7 +202,7 @@ exit:
     return ret;
     
 }
-#endif
+
 
 /**
  * Function Name: createEncrypted_data_structure
@@ -193,14 +217,13 @@ int Client_DSSE::createEncrypted_data_structure()
     DSSE* dsse = new DSSE();
     int ret;
     vector<string> files_input;
-#if defined(CLIENT_SERVER_MODE)
+
 
     #if defined(ENCRYPT_PHYSICAL_FILE)
     vector<string> sending_files;
     TYPE_INDEX i;
     #endif
     Miscellaneous misc;
-#endif
 
 #if defined (DECRYPT_AT_CLIENT_SIDE)
     DSSE_KeyGen* dsse_keygen  = new DSSE_KeyGen();
@@ -208,51 +231,6 @@ int Client_DSSE::createEncrypted_data_structure()
     try
     {
         
-
-#if !defined(CLIENT_SERVER_MODE)
-        printf("0. Allocating memory for data structure......");
-    #if !defined(LOAD_FROM_DISK)
-        I = new MatrixType*[MATRIX_ROW_SIZE];
-        for(TYPE_INDEX row = 0 ; row <MATRIX_ROW_SIZE; row++)
-        {
-            I[row] = new MatrixType[MATRIX_COL_SIZE];
-            memset(I[row],0,MATRIX_COL_SIZE);
-        }
-    
-        #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        this->block_state_mat = new MatrixType*[MATRIX_ROW_SIZE];
-        for (TYPE_INDEX row = 0 ;  row < MATRIX_ROW_SIZE; row ++)
-        {
-            this->block_state_mat[row] = new MatrixType[NUM_BLOCKS/BYTE_SIZE];
-            memset(this->block_state_mat[row],ZERO_VALUE,NUM_BLOCKS/BYTE_SIZE);
-        #endif
-    #else
-        this->I_search = new MatrixType*[1];
-        this->I_search[0] = new MatrixType[MATRIX_COL_SIZE];
-        this->I_update = new MatrixType*[MATRIX_ROW_SIZE];
-        TYPE_INDEX c = ceil((double)(ENCRYPT_BLOCK_SIZE)/(BYTE_SIZE));
-        for(TYPE_INDEX i = 0 ; i < MATRIX_ROW_SIZE;i++)
-        {
-            this->I_update[i] = new MatrixType[c];
-            memset(this->I_update[i],0,c);
-        }
-        
-        #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        
-        this->block_state_mat_search = new MatrixType*[1];
-        this->block_state_mat_search[0] = new MatrixType[NUM_BLOCKS];
-        memset(this->block_state_mat_search[0],0,NUM_BLOCKS);
-                
-        this->block_state_mat_update = new MatrixType*[BLOCK_STATE_ROW_SIZE];
-        for(TYPE_INDEX i = 0 ; i < BLOCK_STATE_ROW_SIZE;i++)
-        {
-            this->block_state_mat_update[i] = new MatrixType[1];
-            memset(this->block_state_mat_update[i],0,1);
-        }
-        #endif
-
-    #endif
-#endif
         /* Allocate memory for I' & block state array */
         I_prime = new MatrixType[MATRIX_ROW_SIZE*ENCRYPT_BLOCK_SIZE/BYTE_SIZE];
         memset(I_prime,0,MATRIX_ROW_SIZE*ENCRYPT_BLOCK_SIZE/BYTE_SIZE);
@@ -291,8 +269,6 @@ int Client_DSSE::createEncrypted_data_structure()
     dsse_keygen->pregenerateRow_keys(this->keyword_counter_arr,row_keys,this->masterKey);
     
 #endif
-
-#if defined(CLIENT_SERVER_MODE)
 
         /* Write block_counter_arr to the file */
         printf("2. Writing data structure to files...");
@@ -349,7 +325,6 @@ int Client_DSSE::createEncrypted_data_structure()
         }
     #endif
 
-#endif
     }
     catch (exception &ex)
     {
@@ -359,11 +334,9 @@ int Client_DSSE::createEncrypted_data_structure()
     data_structure_constructed = true;
     ret =0;
 exit:
-#if defined(CLIENT_SERVER_MODE)
     #if defined (ENCRYPT_PHYSICAL_FILE)
         sending_files.clear();
     #endif
-#endif    
 #if defined (DECRYPT_AT_CLIENT_SIDE)
     delete dsse_keygen;
 #endif
@@ -389,7 +362,7 @@ int Client_DSSE::searchKeyword(string keyword, TYPE_COUNTER &number)
     SearchToken tau;
         auto start = time_now;
     auto end = time_now;
-#if defined(CLIENT_SERVER_MODE)
+
     int len;
     unsigned char buffer_in[SOCKET_BUFFER_SIZE] = {'\0'};
 	unsigned char buffer_out[SOCKET_BUFFER_SIZE] = {'\0'};
@@ -408,9 +381,6 @@ int Client_DSSE::searchKeyword(string keyword, TYPE_COUNTER &number)
     Miscellaneous misc;
 
     #endif
-#else
-    vector<TYPE_INDEX> lstFile_id;
-#endif
 #if defined (DECRYPT_AT_CLIENT_SIDE)
     vector<TYPE_INDEX> lstFile_id;
     
@@ -448,7 +418,6 @@ int Client_DSSE::searchKeyword(string keyword, TYPE_COUNTER &number)
             goto exit;
         }
         /* 2. Peform the search...*/
-#if defined(CLIENT_SERVER_MODE)
     #if !defined(DECRYPT_AT_CLIENT_SIDE)
         start = time_now;
 //        printf("2. Sending keyword token to sever...\n");
@@ -615,75 +584,6 @@ int Client_DSSE::searchKeyword(string keyword, TYPE_COUNTER &number)
         
     #endif
     
-#else
-   
-    #if defined (LOAD_FROM_DISK)
-        loadData_from_file(ROW,tau.row_index);
-    #endif
-    #if defined(DECRYPT_AT_CLIENT_SIDE)
-    
-        MatrixType *search_data = new MatrixType[MATRIX_COL_SIZE];
-        memset(search_data,0,MATRIX_COL_SIZE);
-      #if !defined(LOAD_FROM_DISK)
-        dsse->getBlock(tau.row_index,ROW,this->I,search_data);
-      #else
-        dsse->getBlock(0,ROW,this->I_search,search_data);
-      #endif
-        //precompute aes key
-        unsigned char* aes_keys = new unsigned char[MATRIX_COL_SIZE];
-        memset(aes_keys,0,MATRIX_COL_SIZE);
-        dsse_keygen->precomputeAES_CTR_keys(aes_keys,tau.row_index,ROW,this->block_counter_arr,row_keys,this->masterKey);
-       
-        MatrixType *search_res = new MatrixType[MATRIX_COL_SIZE];
-        memset(search_res,0,MATRIX_COL_SIZE);
-       
-        //decrypt to obtain result
-        dsse_keygen->enc_dec_preAESKey(search_res,search_data,aes_keys,MATRIX_COL_SIZE);
-        for(TYPE_INDEX ii=0; ii<MATRIX_COL_SIZE; ii++)
-        {
-                for(int bit_number = 0 ; bit_number<BYTE_SIZE; bit_number++)
-                    if(BIT_CHECK(&search_res[ii].byte_data,bit_number))
-                        lstFile_id.push_back(ii*BYTE_SIZE+bit_number);
-        }
-
-    #else
-        
-        printf("2. Performing local search...");
-        lstFile_id.clear();
-      #if defined(LOAD_FROM_DISK)
-        TYPE_INDEX tmp = tau.row_index;
-        tau.row_index = 0;
-        if((ret=dsse->search(lstFile_id,tau,I_search,
-                            this->block_counter_arr,
-                            this->block_state_mat_search))!=0)
-        {
-            printf("Error during performing local search...\n");
-            goto exit;
-        }
-      
-      #else
-        if((ret=dsse->search(lstFile_id,tau,this->I,
-                            this->block_counter_arr,
-                            this->block_state_mat))!=0)
-        {
-            printf("Error during performing local search...\n");
-            goto exit;
-        }
-      #endif
-        printf("OK!\n");
-      #if defined(LOAD_FROM_DISK)
-        printf("3. Saving new data to files...");
-        saveData_to_file(ROW,tmp);
-      #endif
-        printf("OK!\n");
-    
-    #endif
-
-        number = lstFile_id.size();
-        Miscellaneous::write_list_to_file(FILENAME_SEARCH_RESULT,gcsDataStructureFilepath,lstFile_id);
-//        printf("\n---------------------------\n");
-
-#endif
     }
     catch (exception &ex)
     {
@@ -695,7 +595,7 @@ int Client_DSSE::searchKeyword(string keyword, TYPE_COUNTER &number)
 exit:
     memset(&tau,0,sizeof(SearchToken));
     delete dsse;
-#if defined(CLIENT_SERVER_MODE) && !defined(DECRYPT_AT_CLIENT_SIDE)
+#if !defined(DECRYPT_AT_CLIENT_SIDE)
     socket.disconnect(PEER_ADDRESS);
     socket.close();
 #if defined(SEND_SEARCH_FILE_INDEX)
@@ -709,7 +609,6 @@ exit:
 
     return ret;
  }
-#if defined(CLIENT_SERVER_MODE)
 
 int Client_DSSE::requestBlock_data(TYPE_INDEX block_index, MatrixType* I_prime, bool* block_state_arr ) 
 {
@@ -790,10 +689,9 @@ exit:
     socket.close();
     return ret;
 }
-#endif
 
 
-#if defined(CLIENT_SERVER_MODE) 
+
 int Client_DSSE::sendBlock_data(TYPE_INDEX block_index, MatrixType *I_prime)
  {
     int cmd;
@@ -852,7 +750,7 @@ exit:
     filename_temp_with_path.clear();
     return ret;
 }
-#endif
+
 
 /**
  * Function Name: addFile
@@ -883,15 +781,10 @@ int Client_DSSE::addFile(string filename, string path)
     stringstream new_filename_with_path;
     string s;
     
-#if defined(CLIENT_SERVER_MODE)
     #if defined(ENCRYPT_PHYSICAL_FILE)
     vector<string> file_names;
     #endif
     
-#else
-    TYPE_INDEX row;
-    TYPE_COUNTER* null_ptr = NULL;
-#endif
 #if defined(DECRYPT_AT_CLIENT_SIDE)
     DSSE_KeyGen* dsse_keygen = new DSSE_KeyGen();
    
@@ -959,7 +852,6 @@ auto end = time_now;
     
 #endif
     
-#if defined (CLIENT_SERVER_MODE)
         if(ENCRYPT_BLOCK_SIZE>1)
         {
     #if !defined (DECRYPT_AT_CLIENT_SIDE)
@@ -998,45 +890,7 @@ auto end = time_now;
         
    
     #endif
-#else 
-    #if defined(LOAD_FROM_DISK)
-        loadData_from_file(COL,block_index);
-    #endif
-        if(ENCRYPT_BLOCK_SIZE>1)
-        {
-            printf("2. Getting block data locally...");
-        #if !defined(LOAD_FROM_DISK)    
-            dsse->getBlock(block_index,COL,this->I,this->I_prime);
-        #else
-            dsse->getBlock(idx,COL,this->I_update,this->I_prime);
-         
-        #endif
-            printf("OK!\n");
-        }
-    #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        printf("2.1 Getting state data locally...");
-        //this->block_state_arr = new bool[MATRIX_ROW_SIZE];
-        for(row = 0 ; row < MATRIX_ROW_SIZE; row++)
-        {
-        #if !defined(LOAD_FROM_DISK)
-            TYPE_INDEX col = block_index / BYTE_SIZE;
-            int bit = block_index % BYTE_SIZE;
-            if(BIT_CHECK(&this->block_state_mat[row][col].byte_data,bit))
-                this->block_state_arr[row] = 1;
-            else
-                this->block_state_arr[row] = 0;
-        #else
-            //TYPE_INDEX col = (block_index %(*BYTE_SIZE)) / BYTE_SIZE;
-            int bit = block_index  % BYTE_SIZE ;
-            if(BIT_CHECK(&this->block_state_mat_update[row][0].byte_data,bit))
-                this->block_state_arr[row] = 1;
-            else
-                this->block_state_arr[row] = 0;
-        #endif
-        }
-        printf("OK!\n");
-    #endif
-#endif
+
 //        printf("3. Peforming AddToken...");
 start = time_now;
 #if !defined(DECRYPT_AT_CLIENT_SIDE)
@@ -1064,7 +918,7 @@ end = time_now;
 //        printf("OK!\n");        
         keywords_dictionary.insert(extracted_keywords.begin(),extracted_keywords.end());
         
-#if defined(CLIENT_SERVER_MODE)     
+
         /* Send the newly updated block data to the server */
 //        printf("5. Sending I\' to server...\n");
         start = time_now;
@@ -1090,43 +944,7 @@ end = time_now;
     #endif
 
 //        printf("\n---------------------------\n");
-#else  
-        printf("4. Peforming Local Add...");
-    #if defined(LOAD_FROM_DISK)
-        if((ret = dsse->update(I_prime,
-                   idx, this->I_update,
-                    NULL,NULL)) !=0)
-        {
-            printf("Failed!\n");
-            goto exit;
-        }
-    #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        int bit = block_index % BYTE_SIZE ;
-        for(row = 0 ; row < MATRIX_ROW_SIZE; row++)
-        {
-            BIT_SET(&this->block_state_mat_update[row][0].byte_data,bit);
-        }
-     #endif
-    #else
-        if((ret = dsse->update(I_prime,
-                   block_index,
-                    this->I,
-                    NULL,this->block_state_mat,*null_ptr)) !=0)
-        {
-            printf("Failed!\n");
-            goto exit;
-        }
-    #endif
-        
-        printf("OK!\n");
-    #if defined(LOAD_FROM_DISK)
-        printf("5. Saving new data to files...");
-        saveData_to_file(COL,block_index);
-        printf("OK\n");
-    #endif
-        
-//        cout<<endl<<"---------------------------"<<endl;
-#endif
+
     
     //move the file to the stored folder 
     /*
@@ -1151,11 +969,9 @@ exit:
     extracted_keywords.clear();
 
     delete dsse;
-#if defined(CLIENT_SERVER_MODE)
 
 #if defined(ENCRYPT_PHYSICAL_FILE)
     file_names.clear();
-#endif
 #endif
 
 #if defined (DECRYPT_AT_CLIENT_SIDE)
@@ -1190,16 +1006,11 @@ int Client_DSSE::delFile(string filename, string path)
     string deleting_filename_with_path = path + filename;
     stringstream new_filename_with_path;
     string s;
-#if defined (CLIENT_SERVER_MODE)
     unsigned char buffer_in[SOCKET_BUFFER_SIZE] ;
     unsigned char buffer_out[SOCKET_BUFFER_SIZE];
     string encrypted_filename = "";
     zmq::context_t context(1);
     zmq::socket_t socket(context,ZMQ_REQ);
-#else
-    TYPE_COUNTER* null_ptr = NULL;
-    TYPE_INDEX row;
-#endif
 #if defined (ENCRYPT_PHYSICAL_FILE)
     int cmd;
 #endif
@@ -1265,7 +1076,6 @@ auto end = time_now;
     
 #endif
 
-#if defined(CLIENT_SERVER_MODE)
         if(ENCRYPT_BLOCK_SIZE>1)
         {
     #if !defined(DECRYPT_AT_CLIENT_SIDE)
@@ -1301,42 +1111,7 @@ auto end = time_now;
         
     #endif
     
-#else
-    #if defined(LOAD_FROM_DISK)
-        loadData_from_file(COL,block_index);
-    #endif
-        if(ENCRYPT_BLOCK_SIZE>1)
-        {
-            printf("2. Getting block data locally...");
-    #if !defined(LOAD_FROM_DISK)  
-            dsse->getBlock(block_index,COL,this->I,this->I_prime);
-    #else
-            dsse->getBlock(idx,COL,this->I_update,this->I_prime);
-    #endif
-        }
-    #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        printf("2.1 Getting state data locally...");
-        //this->block_state_arr = new bool[MATRIX_ROW_SIZE];
-        for(row = 0 ; row < MATRIX_ROW_SIZE; row++)
-        {
-        #if !defined(LOAD_FROM_DISK)
-            TYPE_INDEX col = block_index / BYTE_SIZE;
-            int bit = block_index % BYTE_SIZE;
-            if(BIT_CHECK(&this->block_state_mat[row][col].byte_data,bit))
-                this->block_state_arr[row] = 1;
-            else
-                this->block_state_arr[row] = 0;
-        #else
-            int bit = block_index  % BYTE_SIZE ;
-            if(BIT_CHECK(&this->block_state_mat_update[row][0].byte_data,bit))
-                this->block_state_arr[row] = 1;
-            else
-                this->block_state_arr[row] = 0;
-        #endif
-        }        
-        printf("OK!\n");
-    #endif
-#endif
+
 
    
 //printf("3. Peforming DelToken...");
@@ -1357,7 +1132,6 @@ end = time_now;
           stats[12].push_back(std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count());
   
 //        printf("OK!\n");
-#if defined(CLIENT_SERVER_MODE)
     start = time_now;
 //        printf("5. Sending updated data to server\n");
         this->sendBlock_data(block_index,this->I_prime);
@@ -1391,43 +1165,7 @@ end = time_now;
     #endif
 
 //        printf("\n---------------------------\n");
-#else
-        printf("3. Peforming Local DelToken...");
-    #if defined(LOAD_FROM_DISK)
-        if((ret = dsse->update(this->I_prime,
-                   idx,
-                    this->I_update,
-                    NULL,NULL))!=0)
-        {
-            printf("Failed!\n");
-            goto exit;
-        }
-     #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        int bit = block_index % BYTE_SIZE ;
-        for(row = 0 ; row < MATRIX_ROW_SIZE; row++)
-        {
-            BIT_SET(&this->block_state_mat_update[row][0].byte_data,bit);
-        }
-     #endif
-    #else
-        if((ret = dsse->update(this->I_prime,
-                   block_index,
-                    this->I,
-                    NULL,this->block_state_mat,*null_ptr))!=0)
-        {
-            printf("Failed!\n");
-            goto exit;
-        }
-    #endif
-        
-        printf("OK!\n");
-    #if defined(LOAD_FROM_DISK)
-        printf("5. Saving new data to files...");
-        saveData_to_file(COL,block_index);
-        printf("OK!\n");
-    #endif
-//        printf("\n---------------------------\n");
-#endif
+
         //remove pysical files
         /*
         new_filename_with_path << gcsFilepath << filename;
@@ -1588,7 +1326,6 @@ int Client_DSSE::saveData_to_file(int dim, TYPE_INDEX idx)
 }
 #endif
 
-#if defined (MULTI_THREAD)
 void *Client_DSSE::thread_precomputeAesKey_func(void* param)
 {
     auto start = time_now;
@@ -1641,4 +1378,4 @@ void *Client_DSSE::thread_getUpdateData_func(void* param)
     delete call;
     pthread_exit((void*)opt);
 }
-#endif
+

@@ -79,8 +79,7 @@ int Server_DSSE::start()
     unsigned char buffer[SOCKET_BUFFER_SIZE];
     zmq::context_t context(1);
     zmq::socket_t socket(context,ZMQ_REP);
-    
-    socket.bind(PEER_ADDRESS);
+    socket.bind("tcp://*:"+SERVER_PORT);
 #if defined(UPLOAD_DATA_STRUCTURE_MANUALLY_MODE) && !defined(LOAD_FROM_DISK)
     printf("Loading generated data structure....");
     DSSE* dsse = new DSSE();

@@ -28,13 +28,8 @@ int omac_aesni_done(omac_state *omac, unsigned char *key, unsigned char *out, in
 #endif
 
 // PRNG using Fortuna
-int rdrand_get_n_uints_retry(unsigned int n, unsigned int retry_limit, unsigned int *dest);
 
 int invokeFortuna_prng(unsigned char *seed, unsigned char *key, int seedlen, int keylen);
-int rdrand(unsigned char* output, unsigned int output_len, unsigned int retry_limit);
-int _rdrand64_asm(unsigned long int *therand);
-int _rdrand32_step(unsigned int *therand);
-int _rdrand64_step(unsigned long long int *therand);
 
 #ifdef __cplusplus
 }

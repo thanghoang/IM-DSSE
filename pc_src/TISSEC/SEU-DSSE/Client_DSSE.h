@@ -14,6 +14,7 @@ class Client_DSSE
 private:
     MasterKey* masterKey;
     
+    prng_state prng;
     // file counter
     bool data_structure_constructed;
 	

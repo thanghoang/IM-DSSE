@@ -1,109 +1,41 @@
-Debug/DSSE.cpp.o: \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE.cpp \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/MasterKey.h \
- DSSE_Param.h DSSE_Hashmap_Key_Class.h \
- /scratch/include/sparsehash/dense_hash_map \
- /scratch/include/sparsehash/internal/sparseconfig.h \
- /scratch/include/sparsehash/internal/densehashtable.h \
- /scratch/include/sparsehash/internal/hashtable-common.h \
- /scratch/include/sparsehash/internal/libc_allocator_with_realloc.h \
- /scratch/include/sparsehash/type_traits.h \
- /scratch/include/sparsehash/template_util.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_MatrixType.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_SearchToken.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Keyword_Extraction.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Param.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Miscellaneous.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Trapdoor.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_FileCrypt.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Crypto.h \
- /scratch/include/tomcrypt.h /scratch/include/tomcrypt_custom.h \
- /scratch/include/tomcrypt_cfg.h /scratch/include/tomcrypt_macros.h \
- /scratch/include/tomcrypt_cipher.h /scratch/include/tomcrypt_hash.h \
- /scratch/include/tomcrypt_mac.h /scratch/include/tomcrypt_prng.h \
- /scratch/include/tomcrypt_pk.h /scratch/include/tomcrypt_math.h \
- /scratch/include/tomcrypt_misc.h /scratch/include/tomcrypt_argchk.h \
- /scratch/include/tomcrypt_pkcs.h /scratch/include/iaes_asm_interface.h \
- /scratch/include/iaesni.h /scratch/include/iaesni.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_KeyGen.h \
- /scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Client_DSSE.h \
- MasterKey.h struct_MatrixType.h
+Debug/Server_DSSE.cpp.o: \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/Server_DSSE.cpp \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/Server_DSSE.h \
+ MasterKey.h DSSE_Param.h DSSE_Hashmap_Key_Class.h struct_MatrixType.h \
+ zmq.hpp \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/DSSE_Param.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/DSSE_KeyGen.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/MasterKey.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/struct_MatrixType.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/Miscellaneous.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/DSSE.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/struct_SearchToken.h \
+ /scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/zmq.hpp
 
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/MasterKey.h:
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/Server_DSSE.h:
+
+MasterKey.h:
 
 DSSE_Param.h:
 
 DSSE_Hashmap_Key_Class.h:
 
-/scratch/include/sparsehash/dense_hash_map:
-
-/scratch/include/sparsehash/internal/sparseconfig.h:
-
-/scratch/include/sparsehash/internal/densehashtable.h:
-
-/scratch/include/sparsehash/internal/hashtable-common.h:
-
-/scratch/include/sparsehash/internal/libc_allocator_with_realloc.h:
-
-/scratch/include/sparsehash/type_traits.h:
-
-/scratch/include/sparsehash/template_util.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_MatrixType.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/struct_SearchToken.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Keyword_Extraction.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Param.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Miscellaneous.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Trapdoor.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_FileCrypt.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_Crypto.h:
-
-/scratch/include/tomcrypt.h:
-
-/scratch/include/tomcrypt_custom.h:
-
-/scratch/include/tomcrypt_cfg.h:
-
-/scratch/include/tomcrypt_macros.h:
-
-/scratch/include/tomcrypt_cipher.h:
-
-/scratch/include/tomcrypt_hash.h:
-
-/scratch/include/tomcrypt_mac.h:
-
-/scratch/include/tomcrypt_prng.h:
-
-/scratch/include/tomcrypt_pk.h:
-
-/scratch/include/tomcrypt_math.h:
-
-/scratch/include/tomcrypt_misc.h:
-
-/scratch/include/tomcrypt_argchk.h:
-
-/scratch/include/tomcrypt_pkcs.h:
-
-/scratch/include/iaes_asm_interface.h:
-
-/scratch/include/iaesni.h:
-
-/scratch/include/iaesni.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/DSSE_KeyGen.h:
-
-/scratch/DSSE/src/TISSEC_Client_github_release_DISK_LOAD_MULTITHREAD/TISSEC/SEU-DSSE/Client_DSSE.h:
-
-MasterKey.h:
-
 struct_MatrixType.h:
+
+zmq.hpp:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/DSSE_Param.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/DSSE_KeyGen.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/MasterKey.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/struct_MatrixType.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/Miscellaneous.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/DSSE.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/struct_SearchToken.h:
+
+/scratch/simulation_thanghoang/IM-DSSE/pc_src/TISSEC/SEU-DSSE/zmq.hpp:

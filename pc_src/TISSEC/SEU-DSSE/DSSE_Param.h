@@ -4,48 +4,15 @@
 #include "DSSE_Hashmap_Key_Class.h"	
 
 #define VARIANT_III
-#define C_3
 //#define LOAD_FROM_DISK
 
-//#define PEER_ADDRESS "tcp://52.205.235.102:4433"
-#define PEER_ADDRESS "tcp://52.38.183.119:4433"
+#define PEER_ADDRESS "tcp://localhost:5555"
+
+#define  MAX_NUM_OF_FILES 1024
+#define  MAX_NUM_KEYWORDS 12000 
 
 
-#if defined (C_0)
-#define  MAX_NUM_OF_FILES 50176
-#define  MAX_NUM_KEYWORDS 240000 
-const string noFile = "50000";
-#define  NUM_KEYWORDS  238627
-#define  NUM_FILES  50000
-    
-#elif defined(C_1) 
-#define  MAX_NUM_OF_FILES 100352
-#define  MAX_NUM_KEYWORDS 500000
-const string noFile = "100000";
-#define  NUM_KEYWORDS  485013
-#define  NUM_FILES  100000
-    
-#elif defined(C_2) 
-#define  MAX_NUM_OF_FILES 150528
-#define  MAX_NUM_KEYWORDS 660000
-const string noFile = "150000";
-#define  NUM_KEYWORDS  657323
-#define  NUM_FILES  150000    
-
-#elif defined(C_3) 
-#define  MAX_NUM_OF_FILES 200704
-#define  MAX_NUM_KEYWORDS 820000
-const string noFile = "200000";
-#define  NUM_KEYWORDS  802797
-#define  NUM_FILES  200000    
-
-#elif defined(C_4) 
-#define  MAX_NUM_OF_FILES 250880
-#define  MAX_NUM_KEYWORDS 940000
-const string noFile = "250000";
-#define  NUM_KEYWORDS  938868
-#define  NUM_FILES  250000    
-#endif
+const string SERVER_PORT = "5555";
 
 
 
@@ -75,47 +42,36 @@ const string noFile = "250000";
 #include "climits"
 #include <chrono>
 
-
-
+#include "tomcrypt.h"
 
 
 #if defined(VARIANT_MAIN)
-#define VARIANT 0
     #define ENCRYPT_BLOCK_SIZE 1              // Variant I in bit and should be either 1,2,4 or divisable by 8 and not larger than 128
-    static const string gcsDataStructureFilepath = "../example/" + noFile +"F_data_structure_1/client/";
-    static const string gcsMatrixPiecePath = "../example/" + noFile + "F_data_structure_1/server/";
-
+    
 #elif defined(VARIANT_I) 
-#define VARIANT 1
     #define ENCRYPT_BLOCK_SIZE 128              // Variant I in bit and should be either 1,2,4 or divisable by 8 and not larger than 128
-    static const string gcsDataStructureFilepath = "../example/" + noFile +"F_data_structure_128/client/";
-    static const string gcsMatrixPiecePath = "../example/" + noFile + "F_data_structure_128/server/";
-
+    
 #elif defined(VARIANT_II)
-#define VARIANT 2
     #define DECRYPT_AT_CLIENT_SIDE             //VAriant II
 
     #define ENCRYPT_BLOCK_SIZE 1              // Variant I in bit and should be either 1,2,4 or divisable by 8 and not larger than 128
-    static const string gcsDataStructureFilepath = "../example/" + noFile +"F_data_structure_1/client/";
-    static const string gcsMatrixPiecePath = "../example/" + noFile + "F_data_structure_1/server/";
-
+ 
 #elif defined(VARIANT_III)
-#define VARIANT 3
     #define DECRYPT_AT_CLIENT_SIDE             //VAriant II
 
     #define ENCRYPT_BLOCK_SIZE 128              // Variant I in bit and should be either 1,2,4 or divisable by 8 and not larger than 128
-    static const string gcsDataStructureFilepath = "../example/" + noFile +"F_data_structure_128/client/";
-    static const string gcsMatrixPiecePath = "../example/" + noFile + "F_data_structure_128/server/";
-
+ 
 #endif
 
+static const string gcsDataStructureFilepath = "../data/client/";
+static const string gcsMatrixPiecePath = "../data/EIDX/";
 
 
+static const string gcsFilepath = "../data/DB/";			                // path of files directory (Absolute path recommended if enabling ENCRYPT_PHYSICAL_FILE)
 
-static const string gcsFilepath = "../example/input/" + noFile + "F/";			                // path of files directory (Absolute path recommended if enabling ENCRYPT_PHYSICAL_FILE)
-static const string gcsEncFilepath = "../example/encrypted_input/";				// path of encrypted files directory (Absolute path recommended if enabling ENCRYPT_PHYSICAL_FILE)
-static const string gcsUpdateFilepath = "../example/update/";			        // path of files directory (Absolute path recommended if enabling ENCRYPT_PHYSICAL_FILE)
-static const string gcsEncryptedUpdateFilepath = "../example/encrypted_update/";
+static const string gcsEncFilepath = "../data/EDB/";				// path of encrypted files directory (Absolute path recommended if enabling ENCRYPT_PHYSICAL_FILE)
+static const string gcsUpdateFilepath = "../data/Update/";			        // path of files directory (Absolute path recommended if enabling ENCRYPT_PHYSICAL_FILE)
+static const string gcsEncryptedUpdateFilepath = "../data/EUpdate/";
 
 
 //Client- Service Define
@@ -123,7 +79,7 @@ static const string gcsEncryptedUpdateFilepath = "../example/encrypted_update/";
 #define BLOCK_STATE_PIECE_COL_SIZE 49 //NUM_BLOCKS//20       // in byte
 
 #define MATRIX_PIECE_COL_SIZE  128 //2560         //in byte
-#define MATRIX_PIECE_ROW_SIZE 20000//MATRIX_ROW_SIZE //20000         // in bit
+#define MATRIX_PIECE_ROW_SIZE MATRIX_ROW_SIZE //20000         // in bit
 
 
 #define CLIENT_SERVER_MODE                  // require two machines for client and server
@@ -136,7 +92,7 @@ static const string gcsEncryptedUpdateFilepath = "../example/encrypted_update/";
 #endif
 
 
-#define LOAD_PREBUILT_DATA_MODE                   // enable it to load the previously created data structures
+//#define LOAD_PREBUILT_DATA_MODE                   // enable it to load the previously created data structures
 #define UPLOAD_DATA_STRUCTURE_MANUALLY_MODE       // enable it to manually copy previously created data structure to the server.
 
 

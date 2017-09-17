@@ -3,7 +3,7 @@
 
 #include "struct_MatrixType.h"
 #include "struct_SearchToken.h"
-
+#include "DSSE_Param.h"
 #define KEYWORD_TOKEN_GENERATION_ERR            -0x00000001
 #define DATA_STRUCTURE_NOT_BUILT_ERR            -0x00000002
 #define MAX_KEYWORD_INDEX_EXCEEDED_ERR          -0x00000003
@@ -48,7 +48,7 @@
 
 class DSSE{
 private:
-    
+    prng_state prng;
     int scanDatabase(
 		vector<string> &rFileNames,
 		TYPE_KEYWORD_DICTIONARY &rKeywordsDictionary,
@@ -71,14 +71,13 @@ private:
                                                     TYPE_COUNTER* block_counter_arr,
                                                     MasterKey *pKey);
 
-    int pickRandom_element(TYPE_INDEX &randomIdx,vector<TYPE_INDEX> &setIdx);
+    int pickRandom_element(TYPE_INDEX &randomIdx,vector<TYPE_INDEX> &setIdx,prng_state* prng);
     
 
 
 public:
     DSSE();
     ~DSSE();
-    
     
     int loadEncrypted_matrix_from_files(MatrixType** I);
     int loadBlock_state_matrix_from_file(MatrixType** I);

@@ -21,7 +21,7 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <File Name="Client_DSSE.cpp"/>
-    <File Name="Krawczyk128_KDF.cpp"/>
+    <File Name="Krawczyk128_KDF.cpp" ExcludeProjConfig=""/>
     <File Name="Miscellaneous.cpp"/>
     <File Name="DSSE.cpp"/>
     <File Name="DSSE_Hashmap_Key_Class.cpp"/>
@@ -39,7 +39,7 @@
   </VirtualDirectory>
   <VirtualDirectory Name="include">
     <File Name="DSSE_Param.h"/>
-    <File Name="Krawczyk128_KDF.h"/>
+    <File Name="Krawczyk128_KDF.h" ExcludeProjConfig=""/>
     <File Name="Client_DSSE.h"/>
     <File Name="DSSE_Hashmap_Key_Class.h"/>
     <File Name="MasterKey.h"/>
@@ -72,9 +72,7 @@
       <Compiler Options="-std=c++11; -libstdc++; -ggdb3;-c; -fmessage-length=0;-g;-O0;-Wall;-fPIC;-MMD; -MP;  -MF;-lzmq; -lmsgpack; -lboost_iostreams&#xA;" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="/scratch/include/"/>
       </Compiler>
-      <Linker Options="-lzmq;-lpthread;-ltomcrypt;-lintel_aes64" Required="yes">
-        <LibraryPath Value="/scratch/lib/"/>
-      </Linker>
+      <Linker Options="-lzmq;-lpthread;-ltomcrypt;-lintel_aes64;" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
       <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
