@@ -1,4 +1,94 @@
-# SEU-DSSE
-IM-DSSE: Dynamic Searchable Symmetric Encryption with Incidence Matrix
+# IM-DSSE
+Basic implementation of IM-DSSE. The full paper will be available soon. This project is built on CodeLite IDE (link: http://codelite.org). It is recommended to install CodeLite to load the full IM-DSSE workspace. 
 
-01/11/2016: Version 0.0 uploaded. The code is not fully structured and organized. Please use with cares! Any questions/ concerns should be mailed to hoangmin@oregonstate.edu.
+
+# Required Libraries
+1. ZeroMQ (download link: http://zeromq.org/intro:get-the-software)
+
+2. Libtomcrypt (download link: https://github.com/libtom/libtomcrypt)
+
+3. Intel AES-NI (optional) (download link: https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library)
+
+# Configuration
+All IM-DSSE configurations are located in ```IM-DSSE/config.h```. 
+
+## Highlighted Parameters:
+```
+
+#define INTEL_AES_NI				-> If enabled, use Intel AES-NI library
+
+#define VARIANT_I                  		-> Set 1 of 4 options: VARIANT_MAIN, VARIANT_I, VARIANT_II, VARIANT_III
+
+#define DISK_STORAGE_MODE            	   	-> If enabled, encrypted index will be stored on HDD (RAM if disabled)
+	
+#define SEND_SEARCH_FILE_INDEX        		-> If enabled, search result will contain specific file indexes
+
+#define PEER_ADDRESS "tcp://localhost:5555"	-> Server IP Address & Port
+
+const std::string SERVER_PORT = "5555";		-> Server Port number
+
+
+
+#define  MAX_NUM_OF_FILES 1024              	-> Maximum number of files should be power of 2 and divisible by 8
+#define  MAX_NUM_KEYWORDS 12000             	-> Maximum number of keywords
+
+
+
+```
+
+### Notes
+
+The folder ```IM-DSSE/data``` is required to store generated IM-DSSE data structures.
+
+# Build & Compile
+Goto folder ``IM-DSSE/`` and execute
+``` 
+make
+```
+
+, which produces the binary executable file named ```IM-DSSE``` in ``IM-DSSE/Debug/``.
+
+## If there is an error regarding to BOOL/bool type when compiling with Intel-aes-ni
+
+- Access the header file named ``iaesni.h``, go to line 51, and comment that line as follows:
+
+``` 
+#ifndef bool
+//#define bool BOOL 			-> line 51
+#endif
+ 
+```
+
+## If the hardware does not support Intel-aes-ni
+
+1. Disable INTEL_AES_NI in ``IM-DSSE/config.h``
+
+2. Change the make file, remove the library linker ``-lintel-aes64`` 
+
+
+
+# Usage
+
+Run the binary executable file ```IM-DSSE```, which will ask for either Client or Server mode. The IM-DSSE implementation can be tested using either **single** machine or **multiple** machines with network:
+
+
+## Local Testing:
+1. Set ``PEER_ADDRESS`` in ``IM-DSSE/config.h`` to be ``localhost``. 
+2. Choose  ``SERVER_PORT`` identical with what indicated in ``PEER_ADDRESS``. 
+3. Compile the code with ``make`` in the ``IM-DSSE/`` folder. 
+4. Go to ``IM-DSSE/Debug`` and run the compiled ``IM-DSSE`` file with two different Terminals, each playing the client/server role.
+
+## Real Network Testing:
+1. Set ``PEER_ADDRESS`` and  ``SERVER_PORT`` in ``IM-DSSE/config.h`` with the corresponding server's IP address  and port number.
+2. Run ``make`` in ``IM-DSSE/`` to compile and generate executable file ``IM-DSSE`` in ``IM-DSSE/Debug`` folder.
+3. Copy the file ``IM-DSSE`` in ``IM-DSSE/Debug`` to different machines
+4. Execute the file and follow the instruction on the screen.
+
+
+# Android Build
+
+(To be updated)
+
+
+# Further Information
+For any inquiries, bugs, and assistance on building and running the code, please contact Thang Hoang (hoangmin@oregonstate.edu).
