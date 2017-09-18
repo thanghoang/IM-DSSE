@@ -7,7 +7,7 @@ Basic implementation of IM-DSSE. The full paper will be available soon. This pro
 
 2. Libtomcrypt (download link: https://github.com/libtom/libtomcrypt)
 
-3. Intel AES-NI (optional) (download link: https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library)
+3. Intel AES-NI (*optional*) (download link: https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library)
 
 # Configuration
 All IM-DSSE configurations are located in ```IM-DSSE/config.h```. 
@@ -27,18 +27,15 @@ All IM-DSSE configurations are located in ```IM-DSSE/config.h```.
 
 const std::string SERVER_PORT = "5555";		-> Server Port number
 
-
-
 #define  MAX_NUM_OF_FILES 1024              	-> Maximum number of files should be power of 2 and divisible by 8
+
 #define  MAX_NUM_KEYWORDS 12000             	-> Maximum number of keywords
-
-
 
 ```
 
 ### Notes
 
-The folder ```IM-DSSE/data``` is required to store generated IM-DSSE data structures.
+The folder ``IM-DSSE/data``` as well as its structure are required to store generated IM-DSSE data structures. The database is located in ``IM-DSSE/data/DB``. The implementation recognize DB as a set of document files so that you can copy your DB files to this location. The current DB contains a small subset of enron DB (link: https://www.cs.cmu.edu/~./enron/).
 
 # Build & Compile
 Goto folder ``IM-DSSE/`` and execute
@@ -48,22 +45,21 @@ make
 
 , which produces the binary executable file named ```IM-DSSE``` in ``IM-DSSE/Debug/``.
 
-## If there is an error regarding to BOOL/bool type when compiling with Intel-aes-ni
+### If there is an error regarding to BOOL/bool type when compiling with Intel-aes-ni
 
 - Access the header file named ``iaesni.h``, go to line 51, and comment that line as follows:
 
-``` 
+```
 #ifndef bool
 //#define bool BOOL 			-> line 51
 #endif
- 
 ```
 
-## If the hardware does not support Intel-aes-ni
+### If the hardware does not support Intel-aes-ni
 
 1. Disable INTEL_AES_NI in ``IM-DSSE/config.h``
 
-2. Change the make file, remove the library linker ``-lintel-aes64`` 
+2. Change the make file in ``IM-DSSE/MakeFile`` by removing the library linker ``-lintel-aes64`` 
 
 
 
