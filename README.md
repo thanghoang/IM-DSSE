@@ -7,7 +7,9 @@ Basic implementation of IM-DSSE. The full paper will be available soon. This pro
 
 2. Libtomcrypt (download link: https://github.com/libtom/libtomcrypt)
 
-3. Intel AES-NI (*optional*) (download link: https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library)
+3. Google sparsehash (download link: https://github.com/sparsehash/sparsehash)
+
+4. Intel AES-NI (*optional*) (download link: https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library)
 
 # Configuration
 All IM-DSSE configurations are located in ```IM-DSSE/config.h```. 
@@ -27,7 +29,7 @@ All IM-DSSE configurations are located in ```IM-DSSE/config.h```.
 
 const std::string SERVER_PORT = "5555";		-> Server Port number
 
-#define  MAX_NUM_OF_FILES 1024              	-> Maximum number of files should be power of 2 and divisible by 8
+#define  MAX_NUM_OF_FILES 1024              	-> Maximum number of files (It MUST be the power of 2 and divisible by 8)
 
 #define  MAX_NUM_KEYWORDS 12000             	-> Maximum number of keywords
 
