@@ -553,7 +553,7 @@ int Client_DSSE::searchKeyword(string keyword, TYPE_COUNTER &res)
         cout<<std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count()<<" ns"<<endl;
         if(tau.row_index == KEYWORD_NOT_EXIST)
         {
-            res = KEYWORD_NOT_EXIST;
+            res = 0;
             return 0;
         }
         

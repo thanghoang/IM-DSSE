@@ -90,51 +90,43 @@ int main(int argc, char **argv)
                 client_dsse->sendCommandOnly(CMD_LOADSTATE);
                 break;
             case 1:
-                //start = time_now;
+                start = time_now;
                 client_dsse->createEncrypted_data_structure();
-                //end = time_now;
-                //cout<<"Elapsed time: "<<std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count()<<" ms"<<endl;
+                end = time_now;
+                cout<<"BUILINDG TIME: "<<std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count()<<" ms"<<endl;
                 break;
             case 2:
-                str_keyword = "the";
-                //cout<<"Keyword search: ";
-                //cin>>str_keyword;
-                //std::transform(str_keyword.begin(),str_keyword.end(),str_keyword.begin(),::tolower);
-                
+                //str_keyword = "the";
+                cout<<"Keyword search: ";
+                cin>>str_keyword;
+                std::transform(str_keyword.begin(),str_keyword.end(),str_keyword.begin(),::tolower);
+                search_result =0;
                 client_dsse->searchKeyword(str_keyword,search_result);
-        //            reset(ROW)
-                if(search_result!=KEYWORD_NOT_EXIST)
-                    cout<<" Keyword *"<<str_keyword<<"* appeared in "<<search_result <<" files"<<endl;
-                else
-                    cout<<" Keyword *"<<str_keyword<<"* does not exist in the DB"<<endl;
+                cout<<" Keyword *"<<str_keyword<<"* appeared in "<<search_result <<" files"<<endl;
                 break;
             case 3:
-        /*
-                    cout<<"Specify the filename want to add: ";
-                    cin>>updating_filename;
-                    if(!fexists(gcsUpdateFilepath+updating_filename))
-                    {
-                        cout<<endl<<"File not found! Please put/check the file into/in update folder"<<endl;
-                        break;
-                    }
-                     */
-                    
-                updating_filename = "add";
-                client_dsse->addFile(updating_filename,gcsUpdateFilepath);
-                
-                cout<<"Done!"<<endl;
-                
+        
+                cout<<"Specify the filename want to add: ";
+                cin>>updating_filename;
+                if(!fexists(gcsUpdateFilepath+updating_filename))
+                {
+                    cout<<endl<<"File not found! Please put/check if the file exists in *data/update* folder"<<endl;
+                    break;
+                }
+                //updating_filename = "add";
+                client_dsse->addFile(updating_filename,gcsUpdateFilepath);                    
+                   
                 break;
-                case 4:
-                //    cout<<"Specify the filename want to delete: ";
-                //    cin>>updating_filename;
+            case 4:
+                cout<<"Specify the filename want to delete: ";
+                cin>>updating_filename;
                   
-                updating_filename = "add";
-                //start = time_now;
+                //updating_filename = "add";
+                start = time_now;
                 client_dsse->delFile(updating_filename,gcsUpdateFilepath);
-                //end = time_now;
-                //cout<<"Total Elapsed time: "<<std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count()<<" ms"<<endl;
-                    
+                end = time_now;
+                cout<<"TOTAL UPDATE TIME: "<<std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count()<<" ms"<<endl;
+                
                 break;
             case 5:
                 client_dsse->saveState();
