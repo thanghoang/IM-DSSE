@@ -115,13 +115,13 @@ int DSSE::setupData_structure(
         this->scanDatabase(rFileNames,keywords_dictionary,rT_W,rT_F,path,pKey);
         if(keywords_dictionary.size() >= MAX_NUM_KEYWORDS)
         {
-            printf("Error!\n Not enough memory to handle all keywords\n");
+            printf("Error!\n The encrypted index size is not enough to handle all keywords in the DB, please increase the MAX_NUM_KEYWORDS in config.h\n");
             exit(1);
         }
         
         if (rFileNames.size() >= MAX_NUM_OF_FILES)
         {
-            printf("Error! Not enough memory to handle all files!\n");
+            printf("Error!\n The encrypted index size is not enough to handle all files in the DB, please increase the MAX_NUM_OF_FILES in config.h\n");
             exit(1);
         }
         printf("OK!\n");
