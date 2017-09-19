@@ -37,7 +37,7 @@ const std::string SERVER_PORT = "5555";		-> Server Port number
 
 ### Notes
 
-The folder ``IM-DSSE/data``` as well as its structure are required to store generated IM-DSSE data structures. The database is located in ``IM-DSSE/data/DB``. The implementation recognize DB as a set of document files so that you can copy your DB files to this location. The current DB contains a small subset of enron DB (link: https://www.cs.cmu.edu/~./enron/).
+The folder ``IM-DSSE/data`` as well as its structure are required to store generated IM-DSSE data structures. The database is located in ``IM-DSSE/data/DB``. The implementation recognize DB as a set of document files so that you can copy your DB files to this location. The current DB contains a small subset of enron DB (link: https://www.cs.cmu.edu/~./enron/).
 
 # Build & Compile
 Goto folder ``IM-DSSE/`` and execute
