@@ -13,7 +13,7 @@ Basic implementation of IM-DSSE. The full paper will be available soon. This pro
 
 ## Intel AES-NI installation guide (optional)
 
-Intel-AES-NI is available in Intel® Core™ i5, Intel® Core™ i7, Intel® Xeon® 5600 series and newer processor (see https://ark.intel.com/Search/FeatureFilter?productType=processors&AESTech=true for a complete list). This functionality can be *disabled* to test IM-DSSE with other CPU models (see the Configuration Section below). Here the brief instruction to install Intel-AES-NI:
+IM-DSSE leverages Intel AES-NI to accelerate cryptographic operations. The Intel-AES-NI is available in Intel® Core™ i5, Intel® Core™ i7, Intel® Xeon® 5600 series and newer processor (see https://ark.intel.com/Search/FeatureFilter?productType=processors&AESTech=true for a complete list). This functionality can be *disabled* to test IM-DSSE with other CPU models (see the Configuration Section below). Here the brief instruction to install Intel-AES-NI:
 
 
 1. Extract the .zip file downloaded from https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library
