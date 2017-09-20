@@ -18,8 +18,8 @@ Intel-AES-NI is available in Intel® Core™ i5, Intel® Core™ i7, Intel® Xeo
 
 1. Extract the .zip file downloaded from https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library
 2. Open the Terminal and go to `Intel_AESNI_Sample_Library_v1.2/intel_aes_lib`
-3. Run ``./mk_lnx_lib64.sh``, which will generate the header and library files in intel_aes_lib/include and intel_aes_lib/include directories, resp.
-4. Copy header files and library files to your local folders (e.g., /usr/local/include and /usr/local/lib).
+3. Run ``./mk_lnx_lib64.sh``, which will generate the header and library files in `intel_aes_lib/include` and `intel_aes_lib/include` directories, resp.
+4. Copy header files and library files to your local folders (e.g., `/usr/local/include` and `/usr/local/lib`).
 
 
 # Configuration
