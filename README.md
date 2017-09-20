@@ -60,7 +60,7 @@ make
 
 ### If there is an error regarding to BOOL/bool type when compiling with Intel-aes-ni
 
-- Access the header file named ``iaesni.h``, go to line 51, and comment that line as follows:
+- Access the AES-NI header file named ``iaesni.h``, go to line 51, and comment that line as follows:
 
 ```
 #ifndef bool
@@ -72,7 +72,7 @@ make
 
 1. Disable INTEL_AES_NI in ``IM-DSSE/config.h``
 
-2. Change the make file in ``IM-DSSE/MakeFile`` by removing the library linker ``-lintel-aes64`` 
+2. Remove the library linker ``-lintel-aes64``  in the make file ``IM-DSSE/MakeFile``
 
 
 
