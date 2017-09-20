@@ -453,7 +453,7 @@ int Client_DSSE::sendEncryptedIndex()
     char choice = ' ';
     do
     {
-        cout << "       UPLOAD ENCRYPTED INDEX TO SERVER? (y/n)";
+        cout << "       UPLOAD ENCRYPTED INDEX TO SERVER? (y/n)  \n **** ONLY SAY 'y' IF CLIENT AND SERVER ARE DEPLOYED IN TWO DIFFERENT MACHINES!! *** \n";
         cin >> choice;
         choice = tolower(choice);
     }while( !cin.fail() && choice!='y' && choice!='n' );
