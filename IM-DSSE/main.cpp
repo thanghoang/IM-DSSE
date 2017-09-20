@@ -93,7 +93,7 @@ int main(int argc, char **argv)
                 start = time_now;
                 client_dsse->createEncrypted_data_structure();
                 end = time_now;
-                cout<<"BUILINDG TIME: "<<std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count()<<" ms"<<endl;
+                cout<<"BUILINDG TIME: "<<std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count()<<" ms"<<endl;
                 break;
             case 2:
                 //str_keyword = "the";
