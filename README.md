@@ -11,6 +11,17 @@ Basic implementation of IM-DSSE. The full paper will be available soon. This pro
 
 4. Intel AES-NI (*optional*) (download link: https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library)
 
+## Intel AES-NI installation guide (optional)
+
+Intel-AES-NI is available in Intel® Core™ i5, Intel® Core™ i7, Intel® Xeon® 5600 series and newer processor (see https://ark.intel.com/Search/FeatureFilter?productType=processors&AESTech=true for a complete list). This functionality can be *disabled* to test IM-DSSE with other CPU models (see the Configuration Section below). Here the brief instruction to install Intel-AES-NI:
+
+
+1. Extract the .zip file downloaded from https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library
+2. Open the Terminal and go to `Intel_AESNI_Sample_Library_v1.2/intel_aes_lib`
+3. Run ``./mk_lnx_lib64.sh``, which will generate the header and library files in intel_aes_lib/include and intel_aes_lib/include directories, resp.
+4. Copy header files and library files to your local folders (e.g., /usr/local/include and /usr/local/lib).
+
+
 # Configuration
 All IM-DSSE configurations are located in ```IM-DSSE/config.h```. 
 
