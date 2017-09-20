@@ -19,7 +19,8 @@ IM-DSSE leverages Intel AES-NI to accelerate cryptographic operations. The Intel
 1. Extract the .zip file downloaded from https://software.intel.com/en-us/articles/download-the-intel-aesni-sample-library
 2. Open the Terminal and go to `Intel_AESNI_Sample_Library_v1.2/intel_aes_lib`
 3. Run `./mk_lnx_libXX.sh`, which will generate the header and library files in `intel_aes_lib/include/` and `intel_aes_lib/lib/xXX/` directories, respectively, where ``XX = 64`` (if your OS is 64 bits) or ``XX = 86`` (if your OS is 32 bits).
-4. Copy header files and library files to your local folders (e.g., `/usr/local/include` and `/usr/local/lib`).
+4. Add the `lib` prefix to the generated library file (intel_aesXX.a -> libintel_aesXX.a).
+5. Copy header files and library files to your local folders (e.g., `/usr/local/include` and `/usr/local/lib`).
 
 
 # Configuration
