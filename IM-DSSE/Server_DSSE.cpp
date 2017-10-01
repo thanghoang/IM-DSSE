@@ -434,9 +434,11 @@ int Server_DSSE::getEncrypted_data_structure(zmq::socket_t& socket)
     
     printf("1. Receiving file name....");
     socket.recv(buffer_in,SOCKET_BUFFER_SIZE);
-    string filename((char*)buffer_in);
-    printf("OK!\t\t\t %s \n",filename.c_str());
-    string filename_with_path = gcsDataStructureFilepath + filename;
+    string filename_with_path((char*)buffer_in);
+    
+    //string filename((char*)buffer_in);
+    printf("OK!\n");//,filename.c_str());
+    //string filename_with_path = gcsDataStructureFilepath + filename;
     
     printf("2. Opening the file...");
     if((foutput =fopen(filename_with_path.c_str(),"wb+"))==NULL)
@@ -482,22 +484,9 @@ int Server_DSSE::getEncrypted_data_structure(zmq::socket_t& socket)
     fclose(foutput);
     socket.send((unsigned char*)CMD_SUCCESS,sizeof(CMD_SUCCESS));
     
-        
-    if (filename.compare(FILENAME_BLOCK_COUNTER_ARRAY)==0)
-    {
-        
-    #if !defined(DISK_STORAGE_MODE)
-        dsse.loadEncrypted_matrix_from_files(this->I);
-      #if !defined(DECRYPT_AT_CLIENT_SIDE)
-        dsse.loadBlock_state_matrix_from_file(this->block_state_mat);
-      #endif
-    #endif
     
-        misc.read_array_from_file(filename,gcsDataStructureFilepath,this->block_counter_arr,NUM_BLOCKS);
-    }
+    
     printf("OK!\n\t\t %zu bytes received\n",size_received);
-    
-    printf("4. Updating memory...");
     
     printf("OK!\n");
 
