@@ -1,7 +1,7 @@
 #ifndef MASTERKEY_H
 #define MASTERKEY_H
 
-#include <config.h>
+#include "config.h"
 
 
 struct MasterKey
