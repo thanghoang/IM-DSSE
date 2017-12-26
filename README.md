@@ -1,5 +1,5 @@
 # IM-DSSE
-Basic implementation of IM-DSSE. The full paper will be available soon. This project is built on CodeLite IDE (link: http://codelite.org). It is recommended to install CodeLite to load the full IM-DSSE workspace. 
+Basic implementation of IM-DSSE. The full paper is available on ePrint (https://eprint.iacr.org/2017/1237). This project is built on CodeLite IDE (link: http://codelite.org). It is recommended to install CodeLite to load the full IM-DSSE workspace. 
 
 
 # Required Libraries
