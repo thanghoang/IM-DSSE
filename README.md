@@ -1,5 +1,5 @@
-# IM-DSSE: A High-Security Searchable Encryption Framework for Privacy-Critical Cloud Storage Services
-Basic implementation of IM-DSSE. The full paper is available on ePrint (https://eprint.iacr.org/2017/1237). This project is built on CodeLite IDE (link: http://codelite.org). It is recommended to install CodeLite to load the full IM-DSSE workspace. 
+# IM-DSSE: A Secure Searchable Encryption Framework for Privacy-Critical Cloud Storage Services
+Basic implementation of IM-DSSE. The full paper is available at https://ieeexplore.ieee.org/abstract/document/8632753 (free, but not updated version: https://eprint.iacr.org/2017/1237). This project is built on CodeLite IDE (link: http://codelite.org). It is recommended to install CodeLite to load the full IM-DSSE workspace. 
 
 
 # Required Libraries
