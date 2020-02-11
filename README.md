@@ -100,5 +100,24 @@ Run the binary executable file ```IM-DSSE```, which will ask for either Client o
 (To be updated)
 
 
+## Citing
+
+If the code is found useful, we would be appreciated if our paper can be cited with the following bibtex format 
+
+```
+@article{8632753, 
+author={T. {Hoang} and A. A. {Yavuz} and J. {Guajardo Merchan}}, 
+journal={IEEE Transactions on Services Computing}, 
+title={A Secure Searchable Encryption Framework for Privacy-Critical Cloud Storage Services}, 
+year={2019}, 
+volume={}, 
+number={}, 
+pages={1-1}, 
+keywords={Cloud computing;Indexes;Encryption;Privacy;Complexity theory;Privacy-enhancing technologies, private cloud services;dynamic searchable symmetric encryption}, 
+doi={10.1109/TSC.2019.2897096}, 
+ISSN={2372-0204}, 
+month={},}
+}
+```
 # Further Information
 For any inquiries, bugs, and assistance on building and running the code, please contact me at  [hoangm@mail.usf.edu](mailto:hoangm@mail.usf.edu?Subject=[IM-DSSE]%20Inquriy).
