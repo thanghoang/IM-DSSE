@@ -101,4 +101,4 @@ Run the binary executable file ```IM-DSSE```, which will ask for either Client o
 
 
 # Further Information
-For any inquiries, bugs, and assistance on building and running the code, please contact Thang Hoang (hoangmin@oregonstate.edu).
+For any inquiries, bugs, and assistance on building and running the code, please contact me at [hoangm@mail.usf.edu](hoangm@mail.usf.edu).
